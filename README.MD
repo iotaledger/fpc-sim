@@ -51,6 +51,7 @@ http://datatreker.com/simulations-of-the-fast-probabilistic-consensus-protocol-f
 ## Introduction
 
 The following definition is taken largely from [1]:
+
 FPC is a leaderless probabilistic binary consensus protocol of low communicational complexity that is robust in a Byzantine infrastructure. The basic idea is majority voting. 
 
 We assume the network to have *N* nodes indexed by *1,2,…,N* for modeling purposes. Every node *i* has an opinion or state and these opinions take value in {0,1}; being the reason we speak of a binary consensus. We denote *s_i(t)* for the opinion of the node *i* at time *t*. An honest node takes the initial opinon 1 with probability *p0*.
