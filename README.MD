@@ -93,13 +93,15 @@ For 1 vector parameter input modify the output setting in plot.py to read the co
 ```
 py plot.py
 ```
+The script provides currently two figures: Firstly the termination-, agreement-, and integrity-rate. And secondly the mean last round for all nodes, as well as the mean round at which the protocol terminates. Note, the total message complexity in the network can be approximated by the mean last round times the quorum size k times the number of nodes.
 
 For 2 vector parameter inputs modify the output setting in plot2D.py to read the correct csv columns and then run:
 ```
 py plot2D.py
 ```
+The script provides plots with the termination-, agreement-, and integrity-rate as a function (heat map) ot the input vectors. 
 
-For 1 paramter input (no vector) and enableSaveEta enabled, gives a heatmap of the eta's evolution:
+For 1 paramter input (no vector) and enableSaveEta enabled, gives a heatmap of the eta's evolution with time. More specifically, in every round the number of non-finalized honest nodes are counted that have taken on a given eta value and the result is stored in a slice of histograms (*EtaEvolution*):
 ```
 py plot_eps.py
 ```
