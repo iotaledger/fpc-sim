@@ -101,7 +101,7 @@ To use the Python scripts, you must have Python and PIP installed. These scripts
 2. For a single-vector-parameter input, edit the output setting in the `plot.py` file to read the correct csv column
 
     ```
-    py plot.py
+    python plot.py
     ```
 
     ![Example graph](/images/graph.png)
@@ -115,14 +115,14 @@ The script provides two figures:
 3. For 2-vector-parameter inputs, edit the output setting in the ` file` to read your chosen csv columns
 
     ```
-    py plot2D.py
+    python plot2D.py
     ```
 The script provides plots with the termination, agreement, and integrity rate as a heat map of the input vectors. 
 
 4. For a single-parameter input (no vector), enable the `enableSaveEta` parameter in the `input.txt` file and run:
 
     ```
-    py plot_eps.py
+    python plot_eps.py
     ```
 In every round the number of non-finalized honest nodes are counted that have taken on a given eta value and the result is stored in a slice of histograms (`EtaEvolution`). This data is used to output a heatmap of the eta's evolution with time. 
 
