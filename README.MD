@@ -110,6 +110,8 @@ The script provides two figures:
 
     ![Example graph](/images/graph1.png)
 
+    ![Example graph](/images/graph2.png)
+
 3. For 2-vector-parameter inputs, edit the output setting in the ` file` to read your chosen csv columns
 
     ```
@@ -146,10 +148,10 @@ To change any of these parameters, edit them in the `input.txt` file.
 |   `l`               |   int         | The required consecutive rounds for a node to finalize its opinion |
 |   `maxTermRound`    |   int         | Maximum number of rounds before terminating the protocol |
 |   `Adv_Strategy`    |   int      | Adversary strategy: `Adv_Strategy=1` is where adversary nodes always vote the opposite to whatever the value of the `p0` parameter is. `Adv_Strategy=2` is where adversary nodes vote with the minority opinion of the honest nodes from the previous round |
-| `enableWS` | bool | Enable [Watts-Strogatz graph](https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa)|
+| `enableWS` | bool | Enable [Watts-Strogatz graph]( link ????)|
 | `deltaWS` | float64 | Watts-Strogatz parameter - Proportion of network that can be queried [0 ≤ deltaWS < 1] |
 | `gammaWS` | float64 | Watts-Strogatz paramter - Rewiring probability [0 ≤ gammaWS < 1] |
-|   `rateRandomness`  |   float64     | Average rate at which a random number is created ([see this blog post for more details](https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa)) |
+|   `rateRandomness`  |   float64     | Average rate at which a random number is created ([see this blog post for more details](link ??? )) |
 |   `etaAgreement`    |   float64     | Proportion of nodes ignored for agreement failure |
 |   `enableSaveEta`         |   bool       | Save etas; this does not work if a vector input is provided |
 | `enableExtremeBeta` |   bool        | Experimental: beta switches between min and max threshold |
