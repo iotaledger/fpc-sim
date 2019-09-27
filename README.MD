@@ -67,7 +67,7 @@ Feel free to do your own simulations by following the steps below.
 
 Since we allow for vector inputs, i.e. multiple parameter settings, a progress bar is added to display the progress across the entire parameter space. When the progress bar reaches 100%, the simulator has finished for all parameter settings.
 
-![FPC simulator](/images/fpc-sim.png)
+![FPC simulator](images/fpc-sim.png)
 
 ## Step 2. Examine the data
 
@@ -108,7 +108,7 @@ The script provides two figures:
 
 **Note:** The total message complexity in the network can be approximated by the mean last round times the quorum size k times the number of nodes.
 
-    ![Example graph](/images/graph1.png)
+    ![Example graph](images/graph1.png)
 
 3. For 2-vector-parameter inputs, edit the output setting in the ` file` to read your chosen csv columns
 
