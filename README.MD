@@ -37,7 +37,7 @@ Feel free to do your own simulations by following the steps below.
 
 ## Prerequisites
 
-First, you need to [install Go](https://golang.org/doc/install) if it is not already installed on your machine. It is recommended that you use the most recent version of Go.
+[Install Go](https://golang.org/doc/install) if it is not already installed on your machine. It is recommended that you use the most recent version of Go.
 
 ## Step 1. Build and run the simulation
 
