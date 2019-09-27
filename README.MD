@@ -9,18 +9,19 @@
 
 Fast Probabilistic Consensus (FPC) is one of the proposed consensus algorithms in [Coordicide](https://coordicide.iota.org/) (the removal of the IOTA coordinator).
 
-In FPC, nodes vote on whether they consider a transaction to be confirmed. This vote is represented by a 1 or 0. When the majority of nodes reach the same voting opinion, consensus is reached and the simulation stops.
+In FPC, nodes vote on whether they like or dislike a transaction. This vote is represented by a 1 or 0. When all honest nodes reach the same voting opinion, consensus is reached.
 
-In the simulation, nodes can be either honest or adverse. Honest nodes query the opinion of a random set of other nodes (defined in a `k` parameter) and set their own vote to the majority opinion.
+In the simulation, nodes can be either honest or adverse. Honest nodes query the opinion of a random set of other nodes (defined in a `k` parameter) and set their own opinion to the majority opinion.
 
-To simulate an attack on consensus, you can set a strategy for the adversary nodes in the `Adv_Strategy` parameter.
+To simulate an attack on the protocol, you can set a strategy for the adversary nodes in the `Adv_Strategy` parameter.
 
-Nodes vote in rounds, where for each round of voting, you can define the average initial opinion of the honest nodes (defined in the `p0` parameter). For example, if `p0=7`, the honest nodes will have a 70% majority of 1 votes when the simulation starts. As a result, consensus will be reached when the majority of nodes agree on a 1. If `p0=.2`, the honest nodes will have an 80% majority of 0 votes. As a result, consensus is reached when the majority of nodes agree on a 0. 
+Nodes vote in rounds. You can define the average opinion of the honest nodes (defined in the `p0` parameter) for the initial round. For example, if `p0=0.9`, the honest nodes will have a 90% majority of 1 opinions when the simulation starts. As a result consensus should be reached on the value 1. If `p0=0.2`, the honest nodes will have an 80% majority of 0. As a result, consensus should be reached on the value 0. 
 
-For a given round each node calculates the average opinion of `k` randomly queried nodes and this value is denoted as *eta*. If eta is larger than the threshold, the opinion of that node is set 1, or 0 otherwise. The threshold is  between `[a,b]` in the first round, and between `[beta,1-beta]` in the following rounds. For a given node the protocol terminates if the node has the same opinion for `l` (but at least `l`+`m`) consecutive rounds. Unless the round reaches round `maxTermRound`, for which the simulation stops with a termination failure.
+For a given round each node calculates the average opinion of `k` randomly queried nodes and this value is denoted as *eta*. If eta is larger than the threshold, the opinion of that node is set 1, or 0 otherwise. The threshold is between `[a,b]` in the first round, and between `[beta,1-beta]` in the following rounds. For a given node the protocol terminates if the node has the same opinion for `l` (but at least `l`+`m`) consecutive rounds. Unless the round reaches round `maxTermRound`, for which the simulation stops with a termination failure.
 
 To find out more details about FPC, read the following:
 
+- ["The Fast Probabilistic Consensus simulator"](need link) by Dr. Andreas Penzkofer
 - ["Consensus in the IOTA Tangle - FPC"](https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa) by Dr. Sebastian Mueller
 - "..."  
 ?? add link to blog post here  
@@ -29,7 +30,7 @@ To find out more details about FPC, read the following:
 
 ## Motivation
 
-This repository is where the IOTA Foundation's Research Team simulates tests on the FPC protocol to study various attack strategies on different kinds of network topologies.
+This repository is where the IOTA Foundation's Research Team simulates tests on the FPC protocol to study attack strategies on different kinds of network topologies.
 
 By making this repository open source, the goal is to allow you to keep up with the development status and learn more about how it works.
 
@@ -66,7 +67,7 @@ Feel free to do your own simulations by following the steps below.
     ./sim
     ```
 
-When you the progress bar reaches 100%, the simulator has finished and the nodes have reached a consensus vote.
+Since we allow for vector inputs, i.e. multiple parameter settings, a progress bar is added to display the progress across the entire parameter space. When the progress bar reaches 100%, the simulator has finished for all parameter settings.
 
 ![FPC simulator](/images/fpc-sim.png)
 
@@ -86,7 +87,7 @@ To analyse the results of the simulation, read the `.csv` files in the `data` di
 - *OnesPropEvolution*: Evolution of the 1s proportion
 - *EtaEvolution*: Histogram of honest eta's for each round
 
-Now, you have data, you can run one of the Python scripts to visualize the data in a graph.
+Now that you have data, you can run one of the Python scripts to visualize the data in a graph.
 
 ## Step 3. Visualize the data
 
@@ -103,14 +104,13 @@ To use the Python scripts, you must have Python and PIP installed. These scripts
     ```
     python plot.py
     ```
-
-    ![Example graph](/images/graph.png)
-
 The script provides two figures:
 - The termination, agreement, and integrity rate
 - The mean last round for all nodes, as well as the mean round at which the protocol terminated
 
 **Note:** The total message complexity in the network can be approximated by the mean last round times the quorum size k times the number of nodes.
+
+    ![Example graph](/images/graph.png)
 
 3. For 2-vector-parameter inputs, edit the output setting in the ` file` to read your chosen csv columns
 

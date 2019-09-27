@@ -2,7 +2,7 @@
 # If the line contains a # it will be considered as a comment 
 
 ### - - - - DEFAULT - - - -
-nRun=10
+nRun=100
 N=1000
 a=0.666
 deltaab=0.0

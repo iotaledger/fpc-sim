@@ -46,7 +46,7 @@ def printMeanTermRound():
     plt.xlim(xlim)
     plt.xscale(xscale)
     plt.xlabel(xlabel)
-    plt.ylim((0, 210))
+    plt.ylim((0, 110))
     plt.ylabel("Mean Termination Round")
     plt.legend(loc='best')
     plt.savefig(filename+'.eps', format='eps')
