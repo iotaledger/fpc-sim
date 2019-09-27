@@ -108,7 +108,7 @@ The script provides two figures:
 
 **Note:** The total message complexity in the network can be approximated by the mean last round times the quorum size k times the number of nodes.
 
-    ![Example graph](images/graph1.png)
+   ![Example graph](images/graph1.png)
 
 3. For 2-vector-parameter inputs, edit the output setting in the ` file` to read your chosen csv columns
 
