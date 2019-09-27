@@ -65,7 +65,7 @@ Parameters are provided to the simulation via the text file input.txt. A descrip
 |   nRun            |   int         | Number of runs for each simulation. Each run is a new voting object and it can be, for example, understood as a new transaction. |
 |   N               |   int         | Number of nodes |
 |   a               |   float64     | Lower threshold limit in the first round [0.5 < a < 1] |
-|   deltaab         |   float64     | Difference between a and and upper first threshold limit b  [0.5 < a ≤ b < 1], [deltaab < 1-a ]  |
+|   deltaab         |   float64     | Difference between a and and upper first threshold limit b  <br>[0.5 < a ≤ b < 1], [deltaab < 1-a ]  |
 |   beta            |   float64     | Threshold limits in the subsequent rounds [0 ≤ beta ≤ 0.5] |
 |   p0              |   float64     | Proportion of nodes that have initial opinion 1, or 0 otherwise [0 ≤ p0 ≤ 1] |
 |   q               |   float64     | Proportion of adversaries [0 ≤ q < 1] |
@@ -75,7 +75,7 @@ Parameters are provided to the simulation via the text file input.txt. A descrip
 |   maxTermRound    |   int         | Maximum number of rounds before terminating the protocol |
 |   Adv_Strategy    |   int      | Adversary strategy |
 | enableWS | bool | Enable Watts-Strogatz graph, see also [1] |
-| deltaWS | float64 | Watts-Strogatz parameter - Proportion of network that can be queried [0 ≤ deltaWS < 1] |
+| deltaWS | float64 | Watts-Strogatz parameter - Proportion of network that can be queried <br>[0 ≤ deltaWS < 1] |
 | gammaWS | float64 | Watts-Strogatz paramter - Rewiring probability [0 ≤ gammaWS < 1] |
 |   rateRandomness  |   float64     | Average rate at which a random number is created, see also [1] |
 |   etaAgreement    |   float64     | Proportion of nodes ignored for agreement failure |
