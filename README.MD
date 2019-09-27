@@ -110,8 +110,6 @@ The script provides two figures:
 
     ![Example graph](/images/graph1.png)
 
-    ![Example graph](/images/graph2.png)
-
 3. For 2-vector-parameter inputs, edit the output setting in the ` file` to read your chosen csv columns
 
     ```
