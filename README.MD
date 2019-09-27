@@ -36,16 +36,13 @@ You can then run your simulation by running:
 ```
 ## Literature background
 
-[1] "Consensus in the IOTA Tangle - FPC" by Dr. Sebastian Mueller: 
-https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa
-
-[2] "..."
-?? add link to blog post here
-
-[3] "FPC-BI: Fast Probabilistic Consensus within Byzantine Infrastructures" by Dr. Serguei Popov and Dr. William J. Buchanan:
-https://arxiv.org/pdf/1905.10895.pdf
-
-[4] "Simulations of the FPC" by Dr. Sebastian Mueller: 
+[1] "Consensus in the IOTA Tangle - FPC" by Dr. Sebastian Mueller:  
+https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa  
+[2] "..."  
+?? add link to blog post here  
+[3] "FPC-BI: Fast Probabilistic Consensus within Byzantine Infrastructures" by Dr. Serguei Popov and Dr. William J. Buchanan:  
+https://arxiv.org/pdf/1905.10895.pdf  
+[4] "Simulations of the FPC" by Dr. Sebastian Mueller:   
 http://datatreker.com/simulations-of-the-fast-probabilistic-consensus-protocol-fpc
 
 ## Introduction
