@@ -21,10 +21,8 @@ For a given round each node calculates the average opinion of `k` randomly queri
 
 To find out more details about FPC, read the following:
 
-- ["The Fast Probabilistic Consensus simulator"](need link) by Dr. Andreas Penzkofer
+- ["The Fast Probabilistic Consensus simulator"](link ???) by Dr. Andreas Penzkofer
 - ["Consensus in the IOTA Tangle - FPC"](https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa) by Dr. Sebastian Mueller
-- "..."  
-?? add link to blog post here  
 - ["FPC-BI: Fast Probabilistic Consensus within Byzantine Infrastructures"](https://arxiv.org/pdf/1905.10895.pdf) by Dr. Serguei Popov and Dr. William J. Buchanan  
 - ["Simulations of the FPC"](http://datatreker.com/simulations-of-the-fast-probabilistic-consensus-protocol-fpc) by Dr. Sebastian Mueller   
 
@@ -110,7 +108,7 @@ The script provides two figures:
 
 **Note:** The total message complexity in the network can be approximated by the mean last round times the quorum size k times the number of nodes.
 
-    ![Example graph](/images/graph.png)
+    ![Example graph](/images/graph-1vector.png)
 
 3. For 2-vector-parameter inputs, edit the output setting in the ` file` to read your chosen csv columns
 
