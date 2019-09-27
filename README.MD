@@ -21,7 +21,7 @@ For a given round each node calculates the average opinion of `k` randomly queri
 
 To find out more details about FPC, read the following:
 
-- ["The Fast Probabilistic Consensus simulator"](link ???) by Dr. Andreas Penzkofer
+- ["The Fast Probabilistic Consensus simulator"](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e) by Dr. Andreas Penzkofer
 - ["Consensus in the IOTA Tangle - FPC"](https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa) by Dr. Sebastian Mueller
 - ["FPC-BI: Fast Probabilistic Consensus within Byzantine Infrastructures"](https://arxiv.org/pdf/1905.10895.pdf) by Dr. Serguei Popov and Dr. William J. Buchanan  
 - ["Simulations of the FPC"](http://datatreker.com/simulations-of-the-fast-probabilistic-consensus-protocol-fpc) by Dr. Sebastian Mueller   
@@ -137,7 +137,7 @@ To change any of these parameters, edit them in the `input.txt` file.
 |   `nRun`            |   int         | Number of runs for each simulation. Each run is a new voting object and it can be, for example, understood as a new transaction. |
 |   `N`               |   int         | Number of nodes |
 |   `a`               |   float64     | Lower threshold limit in the first round |
-|   `deltaab`         |   float64     | Difference between a and and upper first threshold limit b  [0.5 < a ≤ b < 1], [deltaab < 1-a ] |
+|   `deltaab`         |   float64     | Difference between a and and upper first threshold limit b  <br>[0.5 < a ≤ b < 1], [deltaab < 1-a ] |
 |   `beta`            |   float64     | Threshold limits in the subsequent rounds [0 ≤ beta ≤ 0.5] |
 |   `p0`              |   float64     | Proportion of nodes that have initial opinion 1, or 0 otherwise [0 ≤ p0 ≤ 1] |
 |   `q`               |   float64     | Proportion of adversaries [0 ≤ q < 1] |
@@ -146,10 +146,10 @@ To change any of these parameters, edit them in the `input.txt` file.
 |   `l`               |   int         | The required consecutive rounds for a node to finalize its opinion |
 |   `maxTermRound`    |   int         | Maximum number of rounds before terminating the protocol |
 |   `Adv_Strategy`    |   int      | Adversary strategy: `Adv_Strategy=1` is where adversary nodes always vote the opposite to whatever the value of the `p0` parameter is. `Adv_Strategy=2` is where adversary nodes vote with the minority opinion of the honest nodes from the previous round |
-| `enableWS` | bool | Enable [Watts-Strogatz graph]( link ????)|
-| `deltaWS` | float64 | Watts-Strogatz parameter - Proportion of network that can be queried [0 ≤ deltaWS < 1] |
+| `enableWS` | bool | Enable [Watts-Strogatz graph](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e)|
+| `deltaWS` | float64 | Watts-Strogatz parameter - Proportion of network that can be queried <br>[0 ≤ deltaWS < 1] |
 | `gammaWS` | float64 | Watts-Strogatz paramter - Rewiring probability [0 ≤ gammaWS < 1] |
-|   `rateRandomness`  |   float64     | Average rate at which a random number is created ([see this blog post for more details](link ??? )) |
+|   `rateRandomness`  |   float64     | Average rate at which a random number is created ([see this blog post for more details](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e)) |
 |   `etaAgreement`    |   float64     | Proportion of nodes ignored for agreement failure |
 |   `enableSaveEta`         |   bool       | Save etas; this does not work if a vector input is provided |
 | `enableExtremeBeta` |   bool        | Experimental: beta switches between min and max threshold |
