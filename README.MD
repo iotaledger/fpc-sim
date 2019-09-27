@@ -7,7 +7,7 @@
 
 ## The Fast Probabilistic Consensus simulator
 
-Fast Probabilistic Consensus (FPC) is one of the proposed consensus algorithms in [Coordicide](https://coordicide.iota.org/) (the removal of the IOTA coordinator).
+Fast Probabilistic Consensus (FPC) is one of the proposed consensus algorithms in [Coordicide](https://coordicide.iota.org/) (the removal of the IOTA Coordinator).
 
 In FPC, nodes vote on whether they like or dislike a transaction. This vote is represented by a 1 or 0. When all honest nodes reach the same voting opinion, consensus is reached.
 
