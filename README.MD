@@ -1,4 +1,4 @@
-# res-sim-fpc
+# fpc-sim
 
 ```
  ____  ____   ___           ____  __  _  _  
@@ -101,7 +101,8 @@ py plot2D.py
 ```
 The script provides plots with the termination-, agreement-, and integrity-rate as a function (heat map) ot the input vectors. 
 
-For 1 paramter input (no vector) and enableSaveEta enabled, gives a heatmap of the eta's evolution with time. More specifically, in every round the number of non-finalized honest nodes are counted that have taken on a given eta value and the result is stored in a slice of histograms (*EtaEvolution*):
+For 1 paramter input (no vector) turn on enableSaveEta in the input.txt file and run: 
 ```
 py plot_eps.py
 ```
+In every round the number of non-finalized honest nodes are counted that have taken on a given eta value and the result is stored in a slice of histograms (*EtaEvolution*). This data is employed to output a heatmap of the eta's evolution with time. 
