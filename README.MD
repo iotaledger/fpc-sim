@@ -43,13 +43,13 @@ Feel free to do your own simulations by following the steps below.
 1. Clone the repository
 
     ```bash
-    git clone https://github.com/iotaledger/res-sim-fpc.git
+    git clone https://github.com/iotaledger/fpc-sim.git
     ```
 
 2. Build the executable file
 
     ```
-    cd res-sim-fpc
+    cd fpc-sim
     go build -o sim
     ```
 
