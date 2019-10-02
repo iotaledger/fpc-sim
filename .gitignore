@@ -1,0 +1,7 @@
+*.exe
+data/*
+.DS_Store
+mod
+sim
+*.bak
+bin/*
