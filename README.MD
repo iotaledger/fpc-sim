@@ -17,7 +17,7 @@ To simulate an attack on the protocol, you can set a strategy for the adversary 
 
 Nodes vote in rounds. You can define the average opinion of the honest nodes (defined in the `p0` parameter) for the initial round. For example, if `p0=0.9`, the honest nodes will have a 90% majority of 1 opinions when the simulation starts. As a result consensus should be reached on the value 1. If `p0=0.2`, the honest nodes will have an 80% majority of 0. As a result, consensus should be reached on the value 0. 
 
-For a given round each node calculates the average opinion of `k` randomly queried nodes and this value is denoted as *eta*. If eta is larger than the threshold, the opinion of that node is set 1, or 0 otherwise. The threshold is between `[a,b]` in the first round, and between `[beta,1-beta]` in the following rounds. For a given node the protocol terminates if the node has the same opinion for `l` (but at least `l`+`m`) consecutive rounds. Unless the round reaches round `maxTermRound`, for which the simulation stops with a termination failure.
+For a given round each node calculates the average opinion of `k` randomly queried nodes and this value is denoted as *eta*. If eta is larger than the threshold, the opinion of that node is set 1, or 0 otherwise. The threshold is between `[a,b]` in the first round, and between `[beta,1-beta]` in the following rounds. For a given node the protocol terminates if the node has the same opinion for `l` (but at least `l`+`m`) consecutive rounds. Unless the round is the last one (defined in `maxTermRound`), in which case the simulation stops with a termination failure.
 
 To find out more details about FPC, read the following:
 
@@ -128,7 +128,7 @@ In every round the number of non-finalized honest nodes are counted that have ta
 
 These parameters affect how the simulated network behaves. As a result, changing these paramters has an affect on how long the network takes to reach a consensus.
 
-A description and functionality of some of the parameters is provided in [the blog](need URL) that accompanies the release of this code.
+A description and functionality of some of the parameters is provided in [the blog](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e) that accompanies the release of this code.
 
 To change any of these parameters, edit them in the `input.txt` file.
 
