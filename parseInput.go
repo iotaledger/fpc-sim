@@ -108,6 +108,12 @@ func (p *Param) selectParam(paramtype, value string, err error) {
 		if err != nil {
 			panic("Unable to parse k")
 		}
+	case "k0":
+		k0, err := strconv.ParseInt(value, 10, 64)
+		p.k0 = int(k0)
+		if err != nil {
+			panic("Unable to parse k0")
+		}
 	case "m":
 		m, err := strconv.ParseInt(value, 10, 64)
 		p.m = int(m)
@@ -169,6 +175,14 @@ func (p *Param) selectParam(paramtype, value string, err error) {
 		} else {
 			panic("Unable to parse enableWS")
 		}
+	case "enableQueryk0":
+		if value == "false" {
+			p.enableQueryk0 = false
+		} else if value == "true" {
+			p.enableQueryk0 = true
+		} else {
+			panic("Unable to parse enableQueryk0")
+		}
 	case "gammaWS":
 		p.gammaWS, err = strconv.ParseFloat(value, 64)
 		if err != nil {
@@ -178,6 +192,19 @@ func (p *Param) selectParam(paramtype, value string, err error) {
 		p.deltaWS, err = strconv.ParseFloat(value, 64)
 		if err != nil {
 			panic("Unable to parse deltaWS")
+		}
+	case "enableZipf":
+		if value == "false" {
+			p.enableZipf = false
+		} else if value == "true" {
+			p.enableZipf = true
+		} else {
+			panic("Unable to parse enableZipf")
+		}
+	case "sZipf":
+		p.sZipf, err = strconv.ParseFloat(value, 64)
+		if err != nil {
+			panic("Unable to parse sZipf")
 		}
 	}
 

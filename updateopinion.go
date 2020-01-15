@@ -22,7 +22,7 @@ func (sim *Sim) getU(threshold_l, threshold_u float64) float64 {
 }
 
 // query p.k random nodes, self query and repetition are allowed
-func (sim *Sim) querySampleHonest(sample []int, queriedRound, queryingNodeID int) (float64, float64) {
+func (sim *Sim) querySampleHonest(sample []int, queriedRound, queryingNodeID, k int) (float64, float64) {
 	eta := 0.
 	counterHonest := 0.
 	for _, queriedNodeID := range sample {
@@ -37,7 +37,7 @@ func (sim *Sim) querySampleHonest(sample []int, queriedRound, queryingNodeID int
 	}
 	// return etaHonest, pHonest
 	if counterHonest > 0 {
-		return eta / counterHonest, counterHonest / float64(sim.p.k)
+		return eta / counterHonest, counterHonest / float64(k)
 	} else {
 		return 0., 0.
 	}
@@ -62,22 +62,34 @@ func (sim *Sim) querySampleAdversary(p *Param, sample []int, queriedRound, query
 }
 
 // get sample
-func (sim *Sim) getSample(id int) []int {
-	sample := make([]int, sim.p.k)
+func (sim *Sim) getSample(id, k int) []int {
+	sample := make([]int, k)
 	if sim.p.EnableQueryWithRepetition {
-		for i := 0; i < sim.p.k; i++ {
-			sample[i] = sim.node[id].neighborsID[sim.rand.Intn(len(sim.node[id].neighborsID))]
+		if !sim.p.enableZipf {
+			// no mana distribution
+			for i := 0; i < k; i++ {
+				sample[i] = sim.node[id].neighborsID[sim.rand.Intn(len(sim.node[id].neighborsID))]
+			}
+		} else {
+			// with mana distribution
+			for i := 0; i < k; i++ {
+				randfloat := sim.rand.Float64()
+				id2 := 0
+				for ; sim.node[id].neighborsCumuManaVec[id2] < randfloat; id2++ {
+				}
+				sample[i] = sim.node[id].neighborsID[id2]
+			}
 		}
 		// sim.node[i].opinion = append(sim.node[i].opinion, sim.querysample(p, round-1, i) > U)
 	} else {
 		panic("This has to be checked before enabling it - e.g. it does not include the neighborsIDlist")
 		selected := make(map[int]bool)
-		// sample p.k unique random nodes
-		if sim.p.k > sim.p.n/2 {
+		// sample k unique random nodes
+		if k > sim.p.n/2 {
 			fmt.Println("It is not recommended to use QueryWithNoRepetition for k>n/2")
 			wait()
 		}
-		for len(selected) < sim.p.k {
+		for len(selected) < k {
 			selected[sim.rand.Intn(sim.p.n)] = true // create an entry for that ID
 		}
 		fmt.Println(selected)
@@ -100,6 +112,14 @@ func (sim *Sim) opinion_update(thisRound int, threshold_l, threshold_u float64) 
 	advMeasure := &AdvMeasure{CurrentAdvOpinionForNode: make([]bool, sim.p.n_honest), CurrentNHonestForNode: make([]int, sim.p.n_honest)}
 	sample := make([][]int, sim.p.n_honest)
 
+	k := sim.p.k
+	// change k if the first round is different
+	if sim.p.enableQueryk0 {
+		if thisRound == 1 {
+			k = sim.p.k0
+		}
+	}
+
 	// - - - - - - - - - - - - - - - - - - - - - - - -
 	// non-finalized nodes' query of honest nodes
 	for id := 0; id < sim.p.n_honest; id++ {
@@ -109,18 +129,18 @@ func (sim *Sim) opinion_update(thisRound int, threshold_l, threshold_u float64) 
 				wait()
 			}
 			// get query sample for this node
-			sample[id] = sim.getSample(id) // this may be cause for slow code but ok for now
+			sample[id] = sim.getSample(id, k) // this may be cause for slow code but ok for now
 			// provide the number of honest nodes per honest node to the adversary
 			// TODO this is already stored in pHonest, so this can be removed once the code takes pHonest rather than CurrentNHonestForNode
 			countHonest := 0
-			for i := 0; i < sim.p.k; i++ {
+			for i := 0; i < k; i++ {
 				if sample[id][i] < sim.p.n_honest {
 					countHonest++
 				}
 			}
 			advMeasure.CurrentNHonestForNode[id] = countHonest
 			// get votes from honest Nodes
-			etaHonest, pHonest := sim.querySampleHonest(sample[id], thisRound-1, id)
+			etaHonest, pHonest := sim.querySampleHonest(sample[id], thisRound-1, id, k)
 			// remember the current etaHonest of the node
 			sim.node[id].etaHonest = append(sim.node[id].etaHonest, etaHonest)
 			// remember the current proportion of honest nodes of the node

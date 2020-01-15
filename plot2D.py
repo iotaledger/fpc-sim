@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 
 # - - - - most frequently changed output parameters - - -
 # 0:a , 1:b , 2:beta , 3:k , 4:m , 5:l , 6:N , 7:p_0 , 8:q , 9:Adv_strategy
-# 10:rateRandomness , 11:deltaWS , 12:gammaWS , 13:maxTermRound, 14:Type , 15:X , 16:Y
+# 10:rateRandomness , 11:deltaWS , 12:gammaWS , 13:maxTermRound, 14:sZipf, 15:Type , 16:X , 17:Y
 xlabel = "Proportion of adversary nodes"
 xcol = 8
 ylabel = "p0"
 ycol = 7
 
 # - - - - parameters unlikely to be changed - - -
-zcol = 16  # last column in the csv file
+zcol = 17  # last column in the csv file
 folder = "data/"  # dont change this
 
 

@@ -23,6 +23,7 @@ func (p *Param) getCsvParam() []string {
 		fmt.Sprintf("%0.9f", p.deltaWS),
 		fmt.Sprintf("%0.9f", p.gammaWS),
 		fmt.Sprintf("%d", p.maxTermRound),
+		fmt.Sprintf("%0.9f", p.sZipf),
 	}
 }
 
