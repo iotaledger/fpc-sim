@@ -13,19 +13,23 @@ type Param struct {
 	n_adv                     int     // total number of adversary nodes
 	Nrun                      int     // total number of Simulation runs
 	k                         int     // number of nodes to query at each round
+	enableQueryk0             bool    // if true, query k0 nodes in first round and finalize if opinion equals all k0 nodes
+	k0                        int     // number of nodes to query first round
 	l                         int     // number of equal consecutive rounds (opinion doesn't change)
 	m                         int     // cooling off period
 	p0                        float64 // proportion of 1s initial honest opinions
 	maxTermRound              int     // maximum number of rounds before aborting FPC
-	enableRandN_adv       bool    // if true, q is used as probability to turn honest node malicious
+	enableRandN_adv           bool    // if true, q is used as probability to turn honest node malicious
 	EnableQueryWithRepetition bool    // allow self querying and repetition in the query sample
 	advStrategy               int     // Adversary startegy
-	enableSaveEta                   bool    // save the eta values for the parameterset
+	enableSaveEta             bool    // save the eta values for the parameterset
 	etaAgreement              float64 // max proportion of nodes ignored to achieve agreement
 	rateRandomness            float64 // probability at which a round has a random number, otherwise threshold = mean value
 	enableWS                  bool    // turn on Watts-Strogatz graph instead of complete graph
-	deltaWS                     float64 // proportion of nodes that are neighbors, when setting up WS
+	deltaWS                   float64 // proportion of nodes that are neighbors, when setting up WS
 	gammaWS                   float64 // probability to reset edges in WS graph
+	enableZipf                bool    // enable Zipf-distribution for Mana
+	sZipf                     float64 // Zipf parameter
 }
 
 func (p *Param) init() error {

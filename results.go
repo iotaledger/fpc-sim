@@ -300,7 +300,7 @@ func (sim *Sim) saveResults() {
 
 func getCsvHeader() []string {
 	return []string{
-		"a", "b", "beta", "k", "m", "l", "N", "p_0", "q", "Adv_strategy", "rateRandomness", "deltaWS", "gammaWS", "maxTermRound", "Type", "X", "Y",
+		"a", "b", "beta", "k", "m", "l", "N", "p_0", "q", "Adv_strategy", "rateRandomness", "deltaWS", "gammaWS", "maxTermRound", "sZipf", "Type", "X", "Y",
 	}
 }
 

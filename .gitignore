@@ -1,7 +1,12 @@
 *.exe
 data/*
+test/*
 .DS_Store
 mod
+output.txt
 sim
 *.bak
+test/*
 bin/*
+mainnetdb/*
+*.zip

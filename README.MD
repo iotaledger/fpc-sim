@@ -142,10 +142,12 @@ To change any of these parameters, edit them in the `input.txt` file.
 |   `p0`              |   float64     | Proportion of nodes that have initial opinion 1, or 0 otherwise [0 ≤ p0 ≤ 1] |
 |   `q`               |   float64     | Proportion of adversaries [0 ≤ q < 1] |
 |   `k`               |   int         | Amount of nodes each node queries     |
+|   `enableQueryk0`         |   bool       | Allow nodes to finalize in first round  |
+|   `k0`              |   int     | Amount of nodes each node queries in the first round if nodes get finalized then |
 |   `m`               |   int         | The cooling-off period |
 |   `l`               |   int         | The required consecutive rounds for a node to finalize its opinion |
 |   `maxTermRound`    |   int         | Maximum number of rounds before terminating the protocol |
-|   `Adv_Strategy`    |   int      | Adversary strategy: `Adv_Strategy=1` is where adversary nodes always vote the opposite to whatever the value of the `p0` parameter is. `Adv_Strategy=2` is where adversary nodes vote with the minority opinion of the honest nodes from the previous round |
+|   `Adv_Strategy`    |   int      | The adversary strategy: the available strategies are shown at the bottom of the readme |
 | `enableWS` | bool | Enable [Watts-Strogatz graph](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e)|
 | `deltaWS` | float64 | Watts-Strogatz parameter - Proportion of network that can be queried <br>[0 ≤ deltaWS < 1] |
 | `gammaWS` | float64 | Watts-Strogatz paramter - Rewiring probability [0 ≤ gammaWS < 1] |
@@ -154,3 +156,16 @@ To change any of these parameters, edit them in the `input.txt` file.
 |   `enableSaveEta`         |   bool       | Save etas; this does not work if a vector input is provided |
 | `enableExtremeBeta` |   bool        | Experimental: beta switches between min and max threshold |
 | `enableRandN_adv` | bool | Turn nodes adversarial with probability q, otherwise assign by index |
+| `enableZipf` | bool | add Mana distribution to honest nodes, adversary distributes mana equally between nodes |
+| `sZipf` | float64 | Zipf distribution parameter |
+
+
+
+## Adversary's strategies
+
+The simulator supports the following strategies:
+- *Strategy 1*: cautious, always send the opposite of the initial majority, determined by `p0`
+- *Strategy 2*: cautious, send the minority of the honest nodes of the previous round
+- *Strategy 3*: berserk, adversary tries to delay the process by splitting the opinions
+- *Strategy 4*: berserk, adversary tries to delay the process in maximizing the uncertainty
+- *Strategy 5*: berserk, try to keep the median of the eta's close to 1/2
