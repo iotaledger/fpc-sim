@@ -147,7 +147,7 @@ To change any of these parameters, edit them in the `input.txt` file.
 |   `m`               |   int         | The cooling-off period |
 |   `l`               |   int         | The required consecutive rounds for a node to finalize its opinion |
 |   `maxTermRound`    |   int         | Maximum number of rounds before terminating the protocol |
-|   `Adv_Strategy`    |   int      | Adversary strategy: `Adv_Strategy=1` is where adversary nodes always vote the opposite to whatever the value of the `p0` parameter is. `Adv_Strategy=2` is where adversary nodes vote with the minority opinion of the honest nodes from the previous round |
+|   `Adv_Strategy`    |   int      | The adversary strategy: the available strategies are shown at the bottom of the readme |
 | `enableWS` | bool | Enable [Watts-Strogatz graph](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e)|
 | `deltaWS` | float64 | Watts-Strogatz parameter - Proportion of network that can be queried <br>[0 ≤ deltaWS < 1] |
 | `gammaWS` | float64 | Watts-Strogatz paramter - Rewiring probability [0 ≤ gammaWS < 1] |
@@ -164,7 +164,7 @@ To change any of these parameters, edit them in the `input.txt` file.
 ## Adversary's strategies
 
 The simulator supports the following strategies:
-- *Strategy 1*: cautious, always send the opposite of p0
+- *Strategy 1*: cautious, always send the opposite of the initial majority, determined by `p0`
 - *Strategy 2*: cautious, send the minority of the honest nodes of the previous round
 - *Strategy 3*: berserk, adversary tries to delay the process by splitting the opinions
 - *Strategy 4*: berserk, adversary tries to delay the process in maximizing the uncertainty
