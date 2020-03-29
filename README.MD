@@ -1,11 +1,37 @@
-```
- ____  ____   ___           ____  __  _  _  
-(  __)(  _ \ / __)   ___   / ___)(  )( \/ ) 
- ) _)  ) __/( (__   (___)  \___ \ )( / \/ \ 
-(__)  (__)   \___)         (____/(__)\_)(_/ 
-```
+<h2 align="center">A simulator for testing the IOTA FPC module</h2>
 
-## The Fast Probabilistic Consensus simulator
+<p align="center">
+  <a href="https://discord.iota.org/" style="text-decoration:none;"><img src="https://img.shields.io/badge/Discord-9cf.svg?logo=discord" alt="Discord"></a>
+    <a href="https://iota.stackexchange.com/" style="text-decoration:none;"><img src="https://img.shields.io/badge/StackExchange-9cf.svg?logo=stackexchange" alt="StackExchange"></a>
+    <a href="https://github.com/iotaledger/fpc-sim/blob/master/LICENSE" style="text-decoration:none;"><img src="https://img.shields.io/github/license/iotaledger/fpc-sim.svg" alt="Apache 2.0 license"></a>
+    <a href="https://golang.org/doc/install" style="text-decoration:none;"><img src="https://img.shields.io/github/go-mod/go-version/iotaledger/fpc-sim" alt="Go version"></a>
+    <a href="https://goreportcard.com/report/github.com/iotaledger/fpc-sim" style="text-decoration:none;"><img src="https://goreportcard.com/badge/github.com/iotaledger/fpc-sim" alt="Go Report Card"></a>
+</p>
+      
+<p align="center">
+  <a href="#about">About</a> ◈
+  <a href="#design">Design</a> ◈
+  <a href="#getting-started">Getting started</a> ◈
+  <a href="#supporting-the-project">Supporting the project</a> ◈
+  <a href="#joining-the-discussion">Joining the discussion</a> 
+</p>
+
+---
+
+## About
+
+This repository is where the IOTA Foundation's Research Team simulates tests on the [Fast Probabilistic Consensus (FPC) protocol](https://coordicide.iota.org/module4.1.2) to study attack strategies on different kinds of network topologies.
+
+By making this repository open source, the goal is to allow you to run your own simulations and get involved with development.
+
+To find out more details about FPC, see the following:
+
+- [The Fast Probabilistic Consensus simulator](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e) by Dr. Andreas Penzkofer
+- [Consensus in the IOTA Tangle - FPC](https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa) by Dr. Sebastian Mueller
+- [FPC-BI: Fast Probabilistic Consensus within Byzantine Infrastructures](https://arxiv.org/pdf/1905.10895.pdf) by Dr. Serguei Popov and Dr. William J. Buchanan  
+- [Simulations of the FPC](http://datatreker.com/simulations-of-the-fast-probabilistic-consensus-protocol-fpc) by Dr. Sebastian Mueller
+
+## Design
 
 Fast Probabilistic Consensus (FPC) is one of the proposed consensus algorithms in [Coordicide](https://coordicide.iota.org/) (the removal of the IOTA Coordinator).
 
@@ -19,26 +45,19 @@ Nodes vote in rounds. You can define the average opinion of the honest nodes (de
 
 For a given round each node calculates the average opinion of `k` randomly queried nodes and this value is denoted as *eta*. If eta is larger than the threshold, the opinion of that node is set 1, or 0 otherwise. The threshold is between `[a,b]` in the first round, and between `[beta,1-beta]` in the following rounds. For a given node the protocol terminates if the node has the same opinion for `l` (but at least `l`+`m`) consecutive rounds. Unless the round is the last one (defined in `maxTermRound`), in which case the simulation stops with a termination failure.
 
-To find out more details about FPC, read the following:
-
-- ["The Fast Probabilistic Consensus simulator"](https://blog.iota.org/the-fast-probabilistic-consensus-simulator-d5963c558b6e) by Dr. Andreas Penzkofer
-- ["Consensus in the IOTA Tangle - FPC"](https://blog.iota.org/consensus-in-the-iota-tangle-fpc-b98e0f1e8fa) by Dr. Sebastian Mueller
-- ["FPC-BI: Fast Probabilistic Consensus within Byzantine Infrastructures"](https://arxiv.org/pdf/1905.10895.pdf) by Dr. Serguei Popov and Dr. William J. Buchanan  
-- ["Simulations of the FPC"](http://datatreker.com/simulations-of-the-fast-probabilistic-consensus-protocol-fpc) by Dr. Sebastian Mueller   
-
-## Motivation
-
-This repository is where the IOTA Foundation's Research Team simulates tests on the FPC protocol to study attack strategies on different kinds of network topologies.
-
-By making this repository open source, the goal is to allow you to keep up with the development status and learn more about how it works.
-
-Feel free to do your own simulations by following the steps below.
-
 ## Prerequisites
 
-[Install Go](https://golang.org/doc/install) if it is not already installed on your machine. It is recommended that you use the most recent version of Go.
+To complete this guide, you need to have at least [version 1.13 of Go](https://golang.org/doc/install) installed on your device.
 
-## Step 1. Build and run the simulation
+To check if you have Go installed, run the following command:
+
+```bash
+go version
+```
+
+## Getting started
+
+To get started, follow these steps to build and run the simulator.
 
 1. Clone the repository
 
@@ -55,41 +74,41 @@ Feel free to do your own simulations by following the steps below.
 
     You can also use the `build` tool to cross-compile the binary files for other architectures.
 
-3. If you want to change how the network behaves, edit the [parameters](#parameters) in the `input.txt` file
+3. If you're using Windows, add the `.exe` file extension to the `sim` file
 
-4. If you're using Windows, add the `.exe` file extension to the `sim` file
-
-5. Run the simulation
+4. Run the simulation
 
     ```
     ./sim
     ```
 
-Since we allow for vector inputs, i.e. multiple parameter settings, a progress bar is added to display the progress across the entire parameter space. When the progress bar reaches 100%, the simulator has finished for all parameter settings.
+A progress bar displays the simulation's progress across the entire parameter space. When the progress bar reaches 100%, the simulator has finished for all parameter settings.
 
 ![FPC simulator](images/fpc-sim.png)
 
-## Step 2. Examine the data
+### Examining the data
 
 To analyse the results of the simulation, read the `.csv` files in the `data` directory:
 
-- *AgreementRate*: Rate at which all honest nodes conclude with the same opinion 
-- *IntegrityRate*: Rate at which all honest nodes conclude with the same opinion and the final opinion is the same as the original majority
-- *TerminationRate*: Rate at which all honest nodes conclude before maxTermRound
-- *MeanTerminationRound*: Average round when FPC terminated
-- *MedianTerminationRound*: Median round when FPC terminated
-- *TerminationRound*: How many rounds are necessary to complete FPC (Histogram)
-- *MeanLastRound*: Mean last round across all nodes
-- *LastRoundHisto*: Histogram of nodes' individual termination rounds
-- *OnesProportion*: The proportion of 1s after the protocol terminates
-- *OnesPropEvolution*: Evolution of the 1s proportion
-- *EtaEvolution*: Histogram of honest eta's for each round
+- **AgreementRate:** Rate at which all honest nodes conclude with the same opinion 
+- **IntegrityRate:** Rate at which all honest nodes conclude with the same opinion and the final opinion is the same as the original majority
+- **TerminationRate:** Rate at which all honest nodes conclude before maxTermRound
+- **MeanTerminationRound:** Average round when FPC terminated
+- **MedianTerminationRound:** Median round when FPC terminated
+- **TerminationRound:** How many rounds are necessary to complete FPC (Histogram)
+- **MeanLastRound:** Mean last round across all nodes
+- **LastRoundHisto:** Histogram of nodes' individual termination rounds
+- **OnesProportion:** The proportion of 1s after the protocol terminates
+- **OnesPropEvolution:** Evolution of the 1s proportion
+- **EtaEvolution:** Histogram of honest eta's for each round
 
 Now that you have data, you can run one of the Python scripts to visualize the data in a graph.
 
-## Step 3. Visualize the data
+### Visualizing the data
 
-To use the Python scripts, you must have Python and PIP installed. These scripts output `.eps` files, so to view the graphs, you need an application that can open them.
+To generate graphs of the data, run the provided Python script.
+
+You must have Python and PIP installed to run this script. The script generates graphs in `.eps` files, so to view the graphs, you also need an application that can open these files.
 
 1. Install the dependencies
 
@@ -124,7 +143,7 @@ The script provides plots with the termination, agreement, and integrity rate as
     ```
 In every round the number of non-finalized honest nodes are counted that have taken on a given eta value and the result is stored in a slice of histograms (`EtaEvolution`). This data is used to output a heatmap of the eta's evolution with time. 
 
-## Parameters
+### Parameters
 
 These parameters affect how the simulated network behaves. As a result, changing these paramters has an affect on how long the network takes to reach a consensus.
 
@@ -159,13 +178,22 @@ To change any of these parameters, edit them in the `input.txt` file.
 | `enableZipf` | bool | add Mana distribution to honest nodes, adversary distributes mana equally between nodes |
 | `sZipf` | float64 | Zipf distribution parameter |
 
-
-
-## Adversary's strategies
+### Adversary's strategies
 
 The simulator supports the following strategies:
-- *Strategy 1*: cautious, always send the opposite of the initial majority, determined by `p0`
-- *Strategy 2*: cautious, send the minority of the honest nodes of the previous round
-- *Strategy 3*: berserk, adversary tries to delay the process by splitting the opinions
-- *Strategy 4*: berserk, adversary tries to delay the process in maximizing the uncertainty
-- *Strategy 5*: berserk, try to keep the median of the eta's close to 1/2
+
+- **Strategy 1:** cautious, always send the opposite of the initial majority, determined by `p0`
+- **Strategy 2:** cautious, send the minority of the honest nodes of the previous round
+- **Strategy 3:** berserk, adversary tries to delay the process by splitting the opinions
+- **Strategy 4:** berserk, adversary tries to delay the process in maximizing the uncertainty
+- **Strategy 5:** berserk, try to keep the median of the eta's close to 1/2
+
+## Supporting the project
+
+If you want to contribute to the code, consider posting a [bug report](https://github.com/iotaledger/fpc-sim/issues/new-issue), feature request or a [pull request](https://github.com/iotaledger/fpc-sim/pulls/).
+
+See the [contributing guidelines](.github/CONTRIBUTING.md) for more information.
+
+## Joining the discussion
+
+If you want to get involved in the community, need help getting started, have any issues related to the repository or just want to discuss blockchain, distributed ledgers, and IoT with other people, feel free to join our [Discord](https://discord.iota.org/).
