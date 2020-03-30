@@ -1,5 +1,5 @@
 ---
-name: Request a feature for the Autopeering Simulator
+name: Request a feature for the FPC Simulator
 about: Request a feature
 ---
 
