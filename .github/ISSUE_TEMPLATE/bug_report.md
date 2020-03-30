@@ -1,5 +1,5 @@
 ---
-name: Report a bug in the Autopeering Simulator
+name: Report a bug in the FPC Simulator
 about: Create a report to help us improve
 title: ""
 labels: bug

@@ -1,6 +1,6 @@
-# Contribute to the Autopeering Simulator
+# Contribute to the FPC Simulator
 
-This document describes how to contribute to the Autopeering Simulator.
+This document describes how to contribute to the FPC Simulator.
 
 We encourage everyone with knowledge of IOTA technology to contribute.
 
@@ -24,7 +24,7 @@ If you have a general or technical question, you can use one of the following re
 <summary>Ways to contribute :mag:</summary>
 <br>
 
-To contribute to the Autopeering Simulator on GitHub, you can:
+To contribute to the FPC Simulator on GitHub, you can:
 
 - Report a bug
 - Suggest a new feature
@@ -45,13 +45,13 @@ Please check the following list:
 
 - **Do not open a GitHub issue for [security vulnerabilities](.github/SECURITY.MD)**, instead, please contact us at [security@iota.org](mailto:security@iota.org).
 
-- **Ensure the bug was not already reported** by searching on GitHub under [**Issues**](https://github.com/iotaledger/autopeering-sim/issues). If the bug has already been reported **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
+- **Ensure the bug was not already reported** by searching on GitHub under [**Issues**](https://github.com/iotaledger/fpc-sim/issues). If the bug has already been reported **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
 
 **Note:** If you find a **Closed** issue that seems similar to what you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
 
 ### Submitting A Bug Report
 
-To report a bug, [open a new issue](https://github.com/iotaledger/autopeering-sim/issues/new), and be sure to include as many details as possible, using the template.
+To report a bug, [open a new issue](https://github.com/iotaledger/fpc-sim/issues/new), and be sure to include as many details as possible, using the template.
 
 **Note:** Minor changes such as fixing a typo can but do not need an open issue.
 
@@ -68,7 +68,7 @@ This section guides you through suggesting a new feature. Following these guidel
 
 ### Before suggesting a new feature
 
-**Ensure the feature has not already been suggested** by searching on GitHub under [**Issues**](https://github.com/iotaledger/autopeering-sim/issues).
+**Ensure the feature has not already been suggested** by searching on GitHub under [**Issues**](https://github.com/iotaledger/fpc-sim/issues).
 
 ### Suggesting a new feature
 
